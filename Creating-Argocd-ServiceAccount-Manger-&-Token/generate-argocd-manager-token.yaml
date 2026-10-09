@@ -2,6 +2,7 @@
 # To create it: touch argocd-manager-token.yaml
 # To Apply it: kubectl apply -f argocd-manager.yaml
 # After Applying it, then use this to Fetch the token : kubectl -n kube-system get secret argocd-manager-token -o jsonpath="{.data.token}" | base64 -d; echo
+# Fetch this target cluster API link (use the token and the api link and edit the secret file for Argocd): kubectl cluster-info
 
 
 apiVersion: v1
