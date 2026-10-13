@@ -5,6 +5,9 @@
  Master node installation
  =========================
  curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --tls-san 18.118.166.161 --node-external-ip 18.118.166.161" sh -
+OR
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --tls-san <PUBLIC_IP> --node-external-ip <PUBLIC_IP> --node-ip <PRIVATE_IP>" sh -
+
 
 MASTERNODE TOKEN 
 sudo cat /var/lib/rancher/k3s/server/node-token
@@ -13,6 +16,8 @@ K103ca7e7725d363736005e3de144ad72b7904e31b1f07df67b48224f26b230c51e::server:a02a
 Worker node installation
 =========================
 curl -sfL https://get.k3s.io | K3S_URL=https://18.118.166.161:6443 K3S_TOKEN=K103ca7e7725d363736005e3de144ad72b7904e31b1f07df67b48224f26b230c51e::server:a02a7cb4851745c5ea5a442dc98e58c3 INSTALL_K3S_EXEC="agent --node-external-ip 16.59.142.64" sh -
+OR
+curl -sfL https://k3s.io | K3S_TOKEN="<PASTE_MASTER_TOKEN>" K3S_URL="https://<MASTER_PRIVATE_IP>:6443" INSTALL_K3S_EXEC="agent --node-ip=<THIS_WORKER_PRIVATE_IP>" sh -
 
 
 kubeconfig file to connect to the cluser externally 
